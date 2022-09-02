@@ -11,10 +11,9 @@ export default function Qabul() {
     // http.post()
   };
 
-  useEffect
-  (() => {
+  useEffect(() => {
     http.get("/qabuls").then((res) => {
-        console.log(res.data);
+      console.log(res.data);
       setQabuls(res.data);
     });
   }, []);
@@ -22,82 +21,74 @@ export default function Qabul() {
   return (
     <div className="content">
       <section className="con-md m-10 bg-slate-500 p-4 rounded-md " id="qabul">
-        <form className="grid">
-          <div className="mb-6 grid-cols-6  ">
-            <label
-              for="text"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Mahsulot nomini kiriting
-            </label>
-            <input
-              type="text"
-              name="ism"
-              onChange={(e) => setProductName(e.target.value)}
-              value={productName}
-              id="text"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Mahsulot nomini kiriting"
-              required
-            />
+        <form>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="mb-6">
+              <label
+                for="text"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >
+                Mahsulot nomini kiriting
+              </label>
+              <input
+                type="text"
+                onChange={(e) => setProductName(e.target.value)}
+                value={productName}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Mahsulot nomini kiriting"
+                required
+              />
+            </div>
+            <div className="mb-6">
+              <label
+                for="text"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >
+                Rangini kiriting
+              </label>
+              <input
+                type="text"
+                onChange={(e) => setColor(e.target.value)}
+                value={color}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Rangini kiriting"
+              />
+            </div>
+            <div className="mb-6 ">
+              <label
+                for="text"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >
+                Ketegoriyasini kiriting
+              </label>
+              <input
+                type="text"
+                onChange={(e) => setCategory(e.target.value)}
+                value={category}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Ketegoriyasini kiriting"
+                required
+              />
+            </div>
+            <div className="mb-6 ">
+              <label
+                for="text"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >
+                Narxini kiriting
+              </label>
+              <input
+                type="text"
+                onChange={(e) => setPrice(e.target.value)}
+                value={price}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Narxini kiriting"
+                required
+              />
+            </div>
           </div>
-          <div className="mb-6 grid-cols-6  ">
-            <label
-              for="text"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Rangini kiriting
-            </label>
-            <input
-              type="text"
-              onChange={(e) => setColor(e.target.value)}
-              value={color}
-              name="ism"
-              id="text"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Rangini kiriting"
-            />
-          </div>
-          <div className="mb-6 grid-cols-6  ">
-            <label
-              for="text"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Ketegoriyasini kiriting
-            </label>
-            <input
-              type="text"
-              onChange={(e) => setCategory(e.target.value)}
-              value={category}
-              name="ism"
-              id="text"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Ketegoriyasini kiriting"
-              required
-            />
-          </div>
-          <div className="mb-6 grid-cols-6  ">
-            <label
-              for="text"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Narxini kiriting
-            </label>
-            <input
-              type="text"
-              onChange={(e) => setPrice(e.target.value)}
-              value={price}
-              name="ism"
-              id="text"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Narxini kiriting"
-              required
-            />
-          </div>
-
           <button
             type="submit"
-            onSubmit={putData}
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Submit
