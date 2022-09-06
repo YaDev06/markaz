@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Qabul;
-use App\Http\Requests\StoreQabulRequest;
-use App\Http\Requests\UpdateQabulRequest;
+use App\Models\Kurs;
+use Illuminate\Http\Request;
 
-class QabulController extends Controller
+class KursController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +30,10 @@ class QabulController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreQabulRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreQabulRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -42,10 +41,10 @@ class QabulController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Qabul  $qabul
+     * @param  \App\Models\Kurs  $kurs
      * @return \Illuminate\Http\Response
      */
-    public function show(Qabul $qabul)
+    public function show(Kurs $kurs)
     {
         //
     }
@@ -53,10 +52,10 @@ class QabulController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Qabul  $qabul
+     * @param  \App\Models\Kurs  $kurs
      * @return \Illuminate\Http\Response
      */
-    public function edit(Qabul $qabul)
+    public function edit(Kurs $kurs)
     {
         //
     }
@@ -64,11 +63,11 @@ class QabulController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateQabulRequest  $request
-     * @param  \App\Models\Qabul  $qabul
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Kurs  $kurs
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateQabulRequest $request, Qabul $qabul)
+    public function update(Request $request, Kurs $kurs)
     {
         //
     }
@@ -76,10 +75,10 @@ class QabulController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Qabul  $qabul
+     * @param  \App\Models\Kurs  $kurs
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Qabul $qabul)
+    public function destroy(Kurs $kurs)
     {
         //
     }

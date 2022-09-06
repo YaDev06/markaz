@@ -15,7 +15,7 @@ use App\Http\Controllers\QabulController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layout');
 });
 
 Route::resource('qabul', QabulController::class);
