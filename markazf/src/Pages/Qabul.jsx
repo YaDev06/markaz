@@ -22,7 +22,7 @@ export default function Qabul() {
     <div className="content">
       <section className="con-md m-10 bg-slate-500 p-4 rounded-md " id="qabul">
         <form>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-2 sm:grid-cols-1 xs:grid-cols-1">
             <div className="mb-6">
               <label
                 for="text"
