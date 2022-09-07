@@ -2,7 +2,7 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [],
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
