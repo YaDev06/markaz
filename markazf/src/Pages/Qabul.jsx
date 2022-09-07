@@ -1,136 +1,149 @@
 import { useEffect, useState } from "react";
-import { http } from "../ExtraFunctions";
+import axios from "axios";
+import { proxy } from "../config";
+import Input from "react-phone-number-input/input";
 
 export default function Qabul() {
-  const [productName, setProductName] = useState("");
-  const [color, setColor] = useState("");
-  const [category, setCategory] = useState("");
-  const [price, setPrice] = useState("");
-  const [qabuls, setQabuls] = useState([]);
-  const putData = () => {
-    // http.post()
+  const [name, setName] = useState("");
+  const [tel1, setTel1] = useState("");
+  const [tel2, setTel2] = useState(null);
+  const [kurs, setKurs] = useState(1);
+  const [vaqt, setVaqt] = useState(0);
+
+  // useEffect(() => {
+  // const [qabuls, setQabuls] = useState([]);
+  //   const fetchQabuls = async () => {
+  //     const response = await fetch(`${proxy}/qabul`);
+  //     const json = await response.json();
+  //     if (response.ok) {
+  //       setQabuls(json);
+  //     }
+  //   };
+  //   fetchQabuls();
+  // }, []);
+
+
+  const newQabul = (e) => {
+    e.preventDefault();
+    axios.post(`${proxy}/qabul/newQabul`, {
+      name,
+      tel1,
+      tel2,
+      kurs,
+      vaqt,
+    });
   };
 
-  useEffect(() => {
-    http.get("/qabuls").then((res) => {
-      console.log(res.data);
-      setQabuls(res.data);
-    });
-  }, []);
-
   return (
-    <div className="content">
+    <>
       <section className="con-md m-10 bg-slate-500 p-4 rounded-md " id="qabul">
-        <form>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-2 sm:grid-cols-1 xs:grid-cols-1">
-            <div className="mb-6">
-              <label
-                for="text"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Mahsulot nomini kiriting
-              </label>
-              <input
-                type="text"
-                onChange={(e) => setProductName(e.target.value)}
-                value={productName}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Mahsulot nomini kiriting"
+        <form onSubmit={newQabul} className="grid">
+          <div className="m-4 grid-cols-6  ">
+            <label
+              for="text"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Ism kiriting
+            </label>
+            <input
+              type="text"
+              onChange={(e) => setName(e.target.value)}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Ism yozing"
+              required=""
+            />
+          </div>
+          <div className="m-4 grid-cols-6  ">
+            <label
+              for="tel1"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              1-telefon raqam
+            </label>
+            <div className="flex">
+              <span className="mt-2 mr-2">+998</span>
+              <Input
+                international
+                countryCallingCodeEditable={false}
+                defaultCountry="UZ"
+                placeholder="1-telefon raqamni kiriting"
                 required
+                value={tel1}
+                onChange={setTel1}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
-            <div className="mb-6">
-              <label
-                for="text"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Rangini kiriting
-              </label>
-              <input
-                type="text"
-                onChange={(e) => setColor(e.target.value)}
-                value={color}
+          </div>
+          <div className="m-4 grid-cols-6  ">
+            <label
+              for="tel2"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              2-telefon raqam
+            </label>
+            <div className="flex">
+              <span className="mt-2 mr-2">+998</span>
+              <Input
+                international
+                countryCallingCodeEditable={false}
+                defaultCountry="UZ"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Rangini kiriting"
+                placeholder="2-telefon raqamni kiriting"
+                required=""
+                value={tel2}
+                onChange={setTel2}
               />
             </div>
-            <div className="mb-6 ">
+          </div>
+          <div className="flex justify-between">
+            <div className="m-4 w-full ">
               <label
-                for="text"
+                for="kurs"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
-                Ketegoriyasini kiriting
+                Kursni tanlang
               </label>
-              <input
-                type="text"
-                onChange={(e) => setCategory(e.target.value)}
-                value={category}
+              <select
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Ketegoriyasini kiriting"
-                required
-              />
+                onChange={(e) => setKurs(e.target.value)}
+              >
+                {/* @forelse ($kursVaqt as $kursVaqt)
+                        <option value="{{$kursVaqt->id}}">{{$kursVaqt->vaqt}}</option>
+                    @empty
+                    <option>vaqt</option>
+                        
+                    @endforelse */}
+                <option value="1"> - - - </option>
+                <option value="1">Dasturlash</option>
+                <option value="2">Ingliz tili</option>
+              </select>
             </div>
-            <div className="mb-6 ">
+            <div className="m-4 w-full ">
               <label
-                for="text"
+                for="kurs"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >
-                Narxini kiriting
+                Kurs vaqti
               </label>
-              <input
-                type="text"
-                onChange={(e) => setPrice(e.target.value)}
-                value={price}
+              <select
+                onChange={(e) => setVaqt(e.target.value)}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Narxini kiriting"
-                required
-              />
+              >
+                <option value="0">- - -</option>
+                <option value="0">Farqi yo'q</option>
+                <option value="1">Abetdan oldin</option>
+                <option value="2">Abetdan keyin</option>
+              </select>
             </div>
           </div>
           <button
             type="submit"
             className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Submit
+            Qo'shish
           </button>
         </form>
       </section>
-
-      <section className="con-md m-10 " id="list-pupils">
-        <div className="overflow-x-auto relative">
-          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-              <tr>
-                <th scope="col" className="py-3 px-6">
-                  Product name
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  Color
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  Category
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  Price
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th
-                  scope="row"
-                  className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  Apple MacBook Pro 17"
-                </th>
-                <td className="py-4 px-6">Sliver</td>
-                <td className="py-4 px-6">Laptop</td>
-                <td className="py-4 px-6">$2999</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </div>
+    </>
   );
 }
