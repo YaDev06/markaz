@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { proxy } from "../config";
+import axios from "../api/axios";
 import Input from "react-phone-number-input/input";
-
+// https://youtu.be/fosiUSC3ZJo
 export default function Qabul() {
   const [name, setName] = useState("");
   const [tel1, setTel1] = useState("");
@@ -10,28 +9,26 @@ export default function Qabul() {
   const [kurs, setKurs] = useState(1);
   const [vaqt, setVaqt] = useState(0);
 
-  // useEffect(() => {
-  // const [qabuls, setQabuls] = useState([]);
-  //   const fetchQabuls = async () => {
-  //     const response = await fetch(`${proxy}/qabul`);
-  //     const json = await response.json();
-  //     if (response.ok) {
-  //       setQabuls(json);
-  //     }
-  //   };
-  //   fetchQabuls();
-  // }, []);
-
+  const [qabuls, setQabuls] = useState([]);
+  useEffect(() => {
+    axios.get(`api/qabul`).then((res) => console.log(res.data));
+  }, []);
 
   const newQabul = (e) => {
     e.preventDefault();
-    axios.post(`${proxy}/qabul/newQabul`, {
-      name,
-      tel1,
-      tel2,
-      kurs,
-      vaqt,
-    });
+    axios
+      .post(`http://127.0.0.1:8000/api/qabul`, {
+        name,
+        tel1,
+        tel2,
+        kurs,
+        vaqt,
+      })
+      .then((res) => {
+        res.json().then((resp) => {
+          console.log(resp);
+        });
+      });
   };
 
   return (
@@ -107,12 +104,6 @@ export default function Qabul() {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 onChange={(e) => setKurs(e.target.value)}
               >
-                {/* @forelse ($kursVaqt as $kursVaqt)
-                        <option value="{{$kursVaqt->id}}">{{$kursVaqt->vaqt}}</option>
-                    @empty
-                    <option>vaqt</option>
-                        
-                    @endforelse */}
                 <option value="1"> - - - </option>
                 <option value="1">Dasturlash</option>
                 <option value="2">Ingliz tili</option>
