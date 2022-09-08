@@ -11,7 +11,15 @@ export default function Qabul() {
 
   const [qabuls, setQabuls] = useState([]);
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/api/qabul`). then((res) => console.log(res));
+    const getQabulFunc = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/api/qabul");
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getQabulFunc();
   }, []);
 
   const newQabul = (e) => {
