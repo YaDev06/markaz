@@ -8,21 +8,31 @@ export default function Qabul() {
   const [tel2, setTel2] = useState(null);
   const [kurs, setKurs] = useState(1);
   const [vaqt, setVaqt] = useState(0);
+  const [izoh, setIzoh] = useState(null);
   const [kurslar, setKurslar] = useState([]);
-
   const [qabuls, setQabuls] = useState([]);
+
   useEffect(() => {
     const getQabulFunc = async () => {
       try {
         const response = await axios.get("http://127.0.0.1:8000/api/qabul");
-        console.log(response.data);
+        setQabuls(response.data);
+        // console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    const getKurslar = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/api/qabul");
+        // console.log(response.data);
+        setKurslar(res.data);
       } catch (error) {
         console.log(error);
       }
     };
     getQabulFunc();
   }, []);
-
   const newQabul = async (e) => {
     e.preventDefault();
     try {
@@ -32,6 +42,8 @@ export default function Qabul() {
         tel2,
         kurs,
         vaqt,
+        izoh,
+        admin_id: 1,
       });
       console.log(res.data);
     } catch (error) {
@@ -44,7 +56,7 @@ export default function Qabul() {
     <>
       <section className="con-md m-10 bg-slate-500 p-4 rounded-md " id="qabul">
         <form onSubmit={newQabul} className="grid">
-          <div className="m-4 grid-cols-6  ">
+          <div className="m-4 grid-cols-6">
             <label
               for="text"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
@@ -113,6 +125,10 @@ export default function Qabul() {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 onChange={(e) => setKurs(e.target.value)}
               >
+                {/* <option value="1"> - - - </option> 
+                 {kurslar.map((item) => (
+                  <option value={item.id}>{item.k_name}</option>
+                ))} */}
                 <option value="1"> - - - </option>
                 <option value="1">Dasturlash</option>
                 <option value="2">Ingliz tili</option>
@@ -135,6 +151,19 @@ export default function Qabul() {
                 <option value="2">Abetdan keyin</option>
               </select>
             </div>
+          </div>
+          <div className="m-4 grid-cols-6">
+            <label
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              htmlFor="textarea"
+            >
+              Izoh
+            </label>
+            <textarea
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Izoh . . . .  . . . . . . . . "
+              onChange={(e) => setIzoh(e.target.value)}
+            ></textarea>
           </div>
           <button
             type="submit"
