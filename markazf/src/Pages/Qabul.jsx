@@ -20,8 +20,6 @@ export default function Qabul() {
       }
     };
     getQabulFunc();
-<<<<<<< HEAD
-=======
     // axios
     //   .get(`http://127.0.0.1:8000/api/qabul`)
     //   .then((data) => data.json())
@@ -29,7 +27,6 @@ export default function Qabul() {
     //   .catch(function (error) {
     //     console.log(error);
     //   });
->>>>>>> c8c4beae969d0e372405add7878f53e3493897ce
   }, []);
 
   const newQabul = (e) => {
