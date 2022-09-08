@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "../api/axios";
 import Input from "react-phone-number-input/input";
-// https://youtu.be/fosiUSC3ZJo
+
 export default function Qabul() {
   const [name, setName] = useState("");
   const [tel1, setTel1] = useState("");
@@ -14,7 +14,7 @@ export default function Qabul() {
     const getQabulFunc = async () => {
       try {
         const response = await axios.get("http://127.0.0.1:8000/api/qabul");
-        console.log(response);
+        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
