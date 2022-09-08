@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "../api/axios";
 import Input from "react-phone-number-input/input";
-// https://youtu.be/fosiUSC3ZJo
+
 export default function Qabul() {
   const [name, setName] = useState("");
   const [tel1, setTel1] = useState("");
@@ -20,6 +20,16 @@ export default function Qabul() {
       }
     };
     getQabulFunc();
+<<<<<<< HEAD
+=======
+    // axios
+    //   .get(`http://127.0.0.1:8000/api/qabul`)
+    //   .then((data) => data.json())
+    //   .then((res) => console.log(res.data))
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+>>>>>>> c8c4beae969d0e372405add7878f53e3493897ce
   }, []);
 
   const newQabul = (e) => {
