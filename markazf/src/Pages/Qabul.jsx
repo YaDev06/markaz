@@ -8,6 +8,7 @@ export default function Qabul() {
   const [tel2, setTel2] = useState(null);
   const [kurs, setKurs] = useState(1);
   const [vaqt, setVaqt] = useState(0);
+  const [kurslar, setKurslar] = useState([]);
 
   const [qabuls, setQabuls] = useState([]);
   useEffect(() => {
@@ -20,30 +21,23 @@ export default function Qabul() {
       }
     };
     getQabulFunc();
-    // axios
-    //   .get(`http://127.0.0.1:8000/api/qabul`)
-    //   .then((data) => data.json())
-    //   .then((res) => console.log(res.data))
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
   }, []);
 
-  const newQabul = (e) => {
+  const newQabul = async (e) => {
     e.preventDefault();
-    axios
-      .post(`http://127.0.0.1:8000/api/qabul`, {
+    try {
+      const res = await axios.post(`http://127.0.0.1:8000/api/qabul`, {
         name,
         tel1,
         tel2,
         kurs,
         vaqt,
-      })
-      .then((res) => {
-        res.json().then((resp) => {
-          console.log(resp);
-        });
       });
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+    getQabulFunc();
   };
 
   return (
