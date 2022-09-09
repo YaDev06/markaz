@@ -15,7 +15,7 @@ export default function Qabul() {
   useEffect(() => {
     const getQabulFunc = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/api/qabul");
+        const response = await axios.get("http://127.0.0.1:8000/api/qabul/store");
         setQabuls(response.data);
         // console.log(response.data);
       } catch (error) {
@@ -36,7 +36,7 @@ export default function Qabul() {
   const newQabul = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`http://127.0.0.1:8000/api/qabul`, {
+      const res = await axios.post(`http://127.0.0.1:8000/api/qabul/store`, {
         name,
         tel1,
         tel2,
