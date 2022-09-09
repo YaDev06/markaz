@@ -50,8 +50,10 @@ class QabulController extends Controller
         $qabul->tel2 = $request->tel2;
         $qabul->kurs = $request->kurs;
         $qabul->vaqt = $request->vaqt;
+        $qabul->izoh = $request->izoh;
         $qabul->admin_id = $request->admin_id;
         $qabul->save();
+        
     }
 
     
