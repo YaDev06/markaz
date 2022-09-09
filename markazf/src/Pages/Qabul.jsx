@@ -37,7 +37,7 @@ export default function Qabul() {
   const newQabul = async (e) => {
     e.preventDefault();
     try {
-      fetch(`http://127.0.0.1:8000/api/qabul`, {
+      fetch(`http://127.0.0.1:8000/api/qabul/store`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
