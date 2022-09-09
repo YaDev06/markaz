@@ -31,7 +31,8 @@ export default function Qabul() {
         console.log(error);
       }
     };
-    getQabulFunc();
+    getQabulFunc()
+    getKurslar()
   }, []);
   const newQabul = async (e) => {
     e.preventDefault();
