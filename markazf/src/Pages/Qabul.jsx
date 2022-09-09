@@ -22,17 +22,17 @@ export default function Qabul() {
         console.log(error);
       }
     };
-    const getKurslar = async () => {
-      try {
-        const response = await axios.get("http://127.0.0.1:8000/api/qabul");
-        // console.log(response.data);
-        setKurslar(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     getQabulFunc()
-    getKurslar()
+    // const getKurslar = async () => {
+    //   try {
+    //     const response = await axios.get("http://127.0.0.1:8000/api/qabul");
+    //     // console.log(response.data);
+    //     setKurslar(res.data);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+    // getKurslar()
   }, []);
   const newQabul = async (e) => {
     e.preventDefault();
@@ -50,7 +50,6 @@ export default function Qabul() {
     } catch (error) {
       console.log(error);
     }
-    getQabulFunc();
   };
 
   return (
