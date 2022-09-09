@@ -22,7 +22,7 @@ export default function Qabul() {
         console.log(error);
       }
     };
-    getQabulFunc()
+    getQabulFunc();
     // const getKurslar = async () => {
     //   try {
     //     const response = await axios.get("http://127.0.0.1:8000/api/qabul");
@@ -35,17 +35,36 @@ export default function Qabul() {
     // getKurslar()
   }, []);
   const newQabul = async (e) => {
+    const data = {
+      name,
+      tel1,
+      tel2,
+      kurs,
+      vaqt,
+      izoh,
+      admin_id: 1,
+    };
     e.preventDefault();
     try {
-      const res = await axios.post(`http://127.0.0.1:8000/api/qabul`, {
-        name,
-        tel1,
-        tel2,
-        kurs,
-        vaqt,
-        izoh,
-        admin_id: 1,
-      });
+      const res = await axios
+        .post(`http://127.0.0.1:8000/api/qabul`, data, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json;charset=UTF-8",
+          },
+        })
+        .then(({ data }) => {
+          console.log(data);
+        });
+      // const res = await axios.post(`http://127.0.0.1:8000/api/qabul`, {
+      //   name,
+      //   tel1,
+      //   tel2,
+      //   kurs,
+      //   vaqt,
+      //   izoh,
+      //   admin_id: 1,
+      // });
       console.log(res.data);
     } catch (error) {
       console.log(error);

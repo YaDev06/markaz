@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\QabulController;
-use App\Models\Kurs;
-use App\Models\Qabul;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
