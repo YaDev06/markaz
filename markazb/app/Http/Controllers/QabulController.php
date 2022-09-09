@@ -44,7 +44,16 @@ class QabulController extends Controller
      */
     public function store(StoreQabulRequest $request)
     {
-        
+        Qabul::create([
+            'name'=> $request->name,
+            'tel1'=> $request->tel1,
+            'tel2'=> $request->tel2,
+            'kurs'=> $request->kurs,
+            'vaqt'=> $request->vaqt,
+            'izoh'=> $request->izoh,
+            'admin_id'=> $request->admin_id,
+        ]);
+        return response()->json('succesfully');
     }
 
     
