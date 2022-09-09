@@ -22,6 +22,10 @@ export default function Qabul() {
         console.log(error);
       }
     };
+<<<<<<< HEAD
+=======
+    getQabulFunc();
+>>>>>>> 9f88319d1de379eaa86fdc6cde7a807839a5ce61
     // const getKurslar = async () => {
     //   try {
     //     const response = await axios.get("http://127.0.0.1:8000/api/qabul");
@@ -31,26 +35,47 @@ export default function Qabul() {
     //     console.log(error);
     //   }
     // };
+<<<<<<< HEAD
     getQabulFunc()
+=======
+>>>>>>> 9f88319d1de379eaa86fdc6cde7a807839a5ce61
     // getKurslar()
   }, []);
   const newQabul = async (e) => {
+    const data = {
+      name,
+      tel1,
+      tel2,
+      kurs,
+      vaqt,
+      izoh,
+      admin_id: 1,
+    };
     e.preventDefault();
     try {
-      const res = await axios.post(`http://127.0.0.1:8000/api/qabul/store`, {
-        name,
-        tel1,
-        tel2,
-        kurs,
-        vaqt,
-        izoh,
-        admin_id: 1,
-      });
-      console.log(res);
+      const res = await axios
+        .post(`http://127.0.0.1:8000/api/qabul`, data, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json;charset=UTF-8",
+          },
+        })
+        .then(({ data }) => {
+          console.log(data);
+        });
+      // const res = await axios.post(`http://127.0.0.1:8000/api/qabul`, {
+      //   name,
+      //   tel1,
+      //   tel2,
+      //   kurs,
+      //   vaqt,
+      //   izoh,
+      //   admin_id: 1,
+      // });
+      console.log(res.data);
     } catch (error) {
       console.log(error);
     }
-    // getQabulFunc();
   };
 
   return (
