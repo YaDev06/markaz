@@ -15,7 +15,7 @@ export default function Qabul() {
   useEffect(() => {
     const getQabulFunc = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/api/qabul");
+        const response = await axios.get("/qabul");
         setQabuls(response.data);
         // console.log(response.data);
       } catch (error) {
@@ -38,39 +38,6 @@ export default function Qabul() {
   const newQabul = async (e) => {
     e.preventDefault();
     try {
-      // fetch(`http://127.0.0.1:8000/api/qabul/store`, {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({
-      //     name,
-      //     tel1,
-      //     tel2,
-      //     kurs,
-      //     vaqt,
-      //     izoh,
-      //     admin_id: 1,
-      //   }),
-      // })
-      //   .then((response) => response.json())
-      //   .then((data) => console.log(data));
-      // axios
-      //   .post(`http://127.0.0.1:8000/api/qabul`, {
-      //   name,
-      //   tel1,
-      //   tel2,
-      //   kurs,
-      //   vaqt,
-      //   izoh,
-      //   admin_id: 1,
-      // });, {
-      //     headers: {
-      //       Accept: "application/json",
-      //       "Content-Type": "application/json;charset=UTF-8",
-      //     },
-      //   })
-      //   .then(({ data }) => {
-      //     console.log(data);
-      //   });
       const res = await axios.post(`/qabul`, {
         name,
         tel1,
