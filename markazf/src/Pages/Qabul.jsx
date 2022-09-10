@@ -35,29 +35,27 @@ export default function Qabul() {
     getQabulFunc()
     // getKurslar()
   }, []);
+
   const newQabul = async (e) => {
-    const data = {
-      name,
-      tel1,
-      tel2,
-      kurs,
-      vaqt,
-      izoh,
-      admin_id: 1,
-    };
     e.preventDefault();
     try {
-     axios
-        .post(`http://127.0.0.1:8000/api/qabul/store`, data, {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json;charset=UTF-8",
-          },
-        })
-        .then(({ data }) => {
-          console.log(data);
-        });
-      // const res = await axios.post(`http://127.0.0.1:8000/api/qabul`, {
+      // fetch(`http://127.0.0.1:8000/api/qabul/store`, {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify({
+      //     name,
+      //     tel1,
+      //     tel2,
+      //     kurs,
+      //     vaqt,
+      //     izoh,
+      //     admin_id: 1,
+      //   }),
+      // })
+      //   .then((response) => response.json())
+      //   .then((data) => console.log(data));
+      // axios
+      //   .post(`http://127.0.0.1:8000/api/qabul`, {
       //   name,
       //   tel1,
       //   tel2,
@@ -65,8 +63,25 @@ export default function Qabul() {
       //   vaqt,
       //   izoh,
       //   admin_id: 1,
-      // });
-      
+      // });, {
+      //     headers: {
+      //       Accept: "application/json",
+      //       "Content-Type": "application/json;charset=UTF-8",
+      //     },
+      //   })
+      //   .then(({ data }) => {
+      //     console.log(data);
+      //   });
+      const res = await axios.post(`/qabul`, {
+        name,
+        tel1,
+        tel2,
+        kurs,
+        vaqt,
+        izoh,
+        admin_id: 1,
+      });
+      console.log(res.data);
     } catch (error) {
       console.log(error);
     }
