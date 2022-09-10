@@ -32,6 +32,7 @@ export default function Qabul() {
     //     console.log(error);
     //   }
     // };
+    getQabulFunc()
     // getKurslar()
   }, []);
 
