@@ -22,7 +22,8 @@ class QabulController extends Controller
         $kursVaqt = kursVaqt::all();
         $kursKun = kursKun::all();
         $qabul = Qabul::all();
-        return $qabul; 
+        return view('qabul.index',['kurs'=>$kurs]);
+        // return $qabul; 
         // qoganlariyam kk
     }
 

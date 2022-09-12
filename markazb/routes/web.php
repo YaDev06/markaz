@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QabulController;
 use App\Models\Kurs;
+use App\Models\Qabul;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,7 @@ use App\Models\Kurs;
 |
 */
 
-Route::get('/qabul', function () {
-    return response()
-            ->json(['name' => 'Abigail', 'state' => 'CA']);
-          
-    // return view('layout');
+Route::get('/', function () {
+   return view('index');
 });
+Route::resource('/qabul',QabulController::class);
