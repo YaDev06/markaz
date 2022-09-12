@@ -19,7 +19,13 @@ export default function Qabul() {
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setInputs((values) => ({ ...values, [name]: value, tel1, tel2 }));
+    setInputs((values) => ({
+      ...values,
+      [name]: value,
+      tel1,
+      tel2,
+      admin_id: 1,
+    }));
   };
 
   const SubmitForm = () => {
