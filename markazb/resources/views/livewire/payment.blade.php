@@ -14,16 +14,15 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label class="form-label" for="fname">ism</label>
-                                <input type="text" class="form-control" id="fnam" value="{{$p->ism}}" >
+                                <input type="text" class="form-control" value="" id="fnam">
                             </div>
-                            
                             <div class="form-group col-sm-6">
                                 <label class="form-label"></label>
                                 <select name="type" class="selectpicker form-control" data-style="py-0">
                                     <option value="">----</option>
-                                  @foreach ($kurss as $kurs)
-                                  <option value="{{$kurs->id}}">{{$kurs->k_name}}</option>
-                                  @endforeach                                  
+                                        @foreach ($kurss as $kurs)
+                                        <option value="{{$kurs->id}}">{{$kurs->k_name}}</option>
+                                        @endforeach                                  
                                 </select>
                             </div>
                         </div>

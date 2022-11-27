@@ -18,9 +18,5 @@ class Payment extends Component
         $this->kurss = Kurs::all();
         $pupils = RealPupils::search($this->search)->first();
         return view('livewire.payment',['p'=>$pupils]);
-
-        
-
-      
     }
 }   
